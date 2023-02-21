@@ -1,5 +1,5 @@
-var garden,rabbit;
-var gardenImg,rabbitImg;
+var garden,rabbit, apple, orangeL, redL;
+var gardenImg,rabbitImg, appleImg, carrotImg, orangeImg, redImg;
 
 function preload(){
   gardenImg = loadImage("garden.png");
@@ -23,11 +23,11 @@ rabbit.scale =0.09;
 rabbit.addImage(rabbitImg);
 }
 
-rabbit.x = World.mouseX;
+
 
 function createApples()
 {
-apple = createSprite (ramdom(50,350),40,10,10);
+apple = createSprite (random(50,350),40,10,10);
 apple.addImage(appleImg);
 apple.scale=0.07;
 apple.velocityY =3;
@@ -36,7 +36,7 @@ apple.lifetime = 150;
 
 function createOrange()
 {
-orangeL = createSprite (ramdom(50,350),40,10,10);
+orangeL = createSprite (random(50,350),40,10,10);
 orangeL.addImage(appleImg);
 orangeL.scale=0.08;
 orangeL.velocityY =3;
@@ -45,7 +45,7 @@ orangeL.lifetime = 150;
 
 function createRed()
 {
-redL = createSprite (ramdom(50,350),40,10,10);
+redL = createSprite (random(50,350),40,10,10);
 redL.addImage(appleImg);
 redL.scale=0.06;
 redL.velocityY =3;
@@ -53,7 +53,21 @@ redL.lifetime = 150;
 }
 
 
-var select_ballon = Math.round (ramdom(1,4));
+
+
+
+
+
+function draw() 
+{
+  
+  background(0);
+rabbit.x = World.mouseX;
+
+  edges= createEdgeSprites();
+  rabbit.collide(edges);
+  
+var select_sprites = Math.round (random(1,4));
   
   if (World.frameCount % 80 == 0) 
   {
@@ -73,19 +87,6 @@ var select_ballon = Math.round (ramdom(1,4));
   }
 
   }
-
-
-
-
-function draw() 
-{
-  
-  background(0);
-
-
-  edges= createEdgeSprites();
-  rabbit.collide(edges);
-
 
   drawSprites();
   
